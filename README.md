@@ -1,88 +1,108 @@
-# Resume Scanner System & Analyzer
+# Automated Resume Relevance Check System
 
 **Hosted URL:**  
-[Resume Scanner System & Analyzer](https://resume-scanner-system-and-analyzer-fk8bgvj6pbodow8evkopx4.streamlit.app/)
+[👉 Live Demo](https://resume-scanner-system-and-analyzer-fk8bgvj6pbodow8evkopx4.streamlit.app/)
 
 ---
 
-## Table of Contents
+## 📌 Problem Statement
 
-- [Overview](#overview)  
-- [Features](#features)  
-- [Technologies Used](#technologies-used)  
-- [How It Works](#how-it-works)  
-- [Usage](#usage)  
-- [Setup & Installation](#setup--installation)  
- 
+At **Innomatics Research Labs**, resume evaluation is currently **manual, inconsistent, and time-consuming**.  
+Every week, the placement team across **Hyderabad, Bangalore, Pune, and Delhi NCR** receives **18–20 job requirements**, with each posting attracting **thousands of applications**.
 
----
+Challenges with the manual process:
+- ❌ Delays in shortlisting candidates.  
+- ❌ Inconsistent judgments, as evaluators may interpret requirements differently.  
+- ❌ High workload for placement staff, limiting focus on student interview prep.  
+- ❌ Hiring companies expect **fast and high-quality** shortlists.  
 
-## Overview
-
-The **Resume Scanner System & Analyzer** is a web-application designed to help users automatically parse, analyze, and evaluate resumes. It extracts key information from uploaded resumes (e.g. name, contact details, skills, experience), summarizes strengths & weaknesses, and can give suggestions for improvement. The goal is to streamline resume review for both job-seekers and recruiters.
+Hence, there is a pressing need for an **automated system** that is **scalable, consistent, and provides actionable feedback** to students.
 
 ---
 
-## Features
+## 🎯 Objective
 
-- Upload resume files (PDF / DOCX / etc.)  
-- Automatic extraction of structured information: name, contact info, education, experience, skills  
-- Summarization of candidate strengths & areas for improvement  
-- Comparison or scoring (if implemented)  
-- User-friendly interface with visual feedback  
-- Support for multiple resume formats  
-- Potential for exporting processed data or suggestions  
+The **Automated Resume Relevance Check System** aims to:
 
----
-
-## Technologies Used
-
-List of main tools, libraries, and frameworks:
-
-- Backend / Logic: Python  
-- Web Framework: Streamlit for UI & deployment  
-- Resume parsing: (e.g. spaCy, pdfminer, docx2text, or custom NLP)  
-- Machine Learning / NLP: maybe use text classification, named entity recognition, etc.  
-- Data storage: Neon.tech and localHost .  
-- Deployment: Streamlit sharing or hosting platform  
+- Automate resume evaluation against job requirements at scale.  
+- Generate a **Relevance Score (0–100)** for each resume.  
+- Highlight **missing skills, certifications, or projects**.  
+- Provide a **fit verdict**: High / Medium / Low suitability.  
+- Offer **personalized improvement feedback** to students.  
+- Store evaluations in a **web-based dashboard** accessible to the placement team.  
+- Handle **thousands of resumes weekly** with consistency and robustness.  
 
 ---
 
-## How It Works
+## 🚀 Proposed Solution
 
-1. User uploads a resume file.  
-2. The system ingests the file and converts to plain text.  
-3. NLP / parsing modules identify entities: name, contact details, education, etc.  
-4. Analysis module processes extracted text to infer strengths & weaknesses: e.g. missing skills, experience gaps, formatting issues.  
-5. Results are displayed in the web UI: structured info + suggestions.  
+We propose building an **AI-powered resume evaluation engine** that combines **rule-based checks** with **LLM-powered semantic understanding**.
+
+### Key Steps
+1. **Job Requirement Upload** – Placement team uploads job descriptions (JD).  
+2. **Resume Upload** – Students upload resumes (PDF/DOCX).  
+3. **Resume Parsing** – Extract raw text, normalize sections.  
+4. **JD Parsing** – Extract job role, must-have and nice-to-have skills.  
+5. **Relevance Analysis** –  
+   - Hard Match: keyword & skill check (exact + fuzzy).  
+   - Semantic Match: embeddings + LLM reasoning.  
+   - Scoring: weighted formula for final score.  
+6. **Output Generation** –  
+   - Relevance Score (0–100).  
+   - Missing skills/projects.  
+   - Verdict: High / Medium / Low.  
+   - Suggestions for improvement.  
+7. **Storage & Dashboard** – Results stored in a database, accessible via a searchable web app.  
 
 ---
 
-## Usage
+## 🛠 Features
 
-1. Go to the hosted URL: [Resume Scanner System & Analyzer](https://resume-scanner-system-and-analyzer-fk8bgvj6pbodow8evkopx4.streamlit.app/)  
-2. Upload your resume.  
-3. Wait for the processing to finish.  
-4. Review the parsed results and suggestions.  
-5. Optionally, use the feedback to improve your resume.  
+- 📄 Resume text extraction (PDF, DOCX).  
+- 🤖 AI-powered semantic comparison with job descriptions.  
+- 📊 Automatic scoring (0–100) based on hard + soft matching.  
+- 🔍 Highlight missing skills, certifications, and projects.  
+- 📝 Personalized improvement feedback for students.  
+- 📂 Placement team dashboard to manage resumes & JDs.  
+- ⚡ Scalable – handles **thousands of resumes weekly**.  
 
 ---
 
-## Setup & Installation
+## 🏗 Tech Stack
 
-To run locally or develop further:
+### Core Resume Parsing & AI
+- **Python** – backend language  
+- **PyMuPDF / pdfplumber** – PDF parsing  
+- **python-docx / docx2txt** – DOCX parsing  
+- **spaCy / NLTK** – entity extraction & text normalization  
+- **LangChain / LangGraph / LangSmith** – LLM orchestration, observability  
+- **Vector Stores**: Chroma / FAISS / Pinecone – embeddings & semantic search  
+- **LLMs**: OpenAI GPT / Gemini / Claude / HuggingFace – semantic matching & feedback  
+- **Keyword Matching**: TF-IDF, BM25, fuzzy search  
+- **Scoring**: Hard + Soft match weighted formula  
+
+### Web Application
+- **Flask / FastAPI** – APIs for resume & JD processing  
+- **Streamlit (MVP)** – front-end dashboard  
+- **SQLite / PostgreSQL** – results storage & metadata  
+
+---
+
+## ⚙️ Installation Steps
+
+To set up locally:
 
 ```bash
-# Clone the repository
-git clone <repo_url>
-cd resume-scanner
+# 1. Clone the repository
+git clone <your_repo_url>
+cd resume-scanner-system
 
-# (Optional) Set up virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# 2. (Optional) Create a virtual environment
+python -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-# Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# Run the app
+# 4. Run the app
 streamlit run app.py
