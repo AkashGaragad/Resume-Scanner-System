@@ -1,18 +1,38 @@
-# database.py - Handles all database operations for PostgreSQL
+# database.py - Handles all database operations for PostgreSQL with Neon.tech
 import psycopg2
 import psycopg2.extras # to fetch data as dictionaries
 import os
 import json
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+from urllib.parse import urlparse
 
 # Load environment variables from .env file
 load_dotenv()
 
 def get_db_connection():
-    """Establishes a connection to the PostgreSQL database."""
+    """Establishes a connection to the Neon.tech PostgreSQL database."""
     try:
-        conn = psycopg2.connect(os.environ['DATABASE_URL'])
+        # Parse the DATABASE_URL to handle Neon's connection requirements
+        db_url = os.environ['DATABASE_URL']
+        result = urlparse(db_url)
+        
+        # Extract connection parameters
+        username = result.username
+        password = result.password
+        database = result.path[1:]  # Remove the leading '/'
+        hostname = result.hostname
+        port = result.port
+        
+        # Create connection string with required parameters for Neon
+        conn = psycopg2.connect(
+            dbname=database,
+            user=username,
+            password=password,
+            host=hostname,
+            port=port,
+            sslmode='require'  # Neon requires SSL
+        )
         return conn
     except Exception as e:
         print(f"Error connecting to the database: {e}")
@@ -47,6 +67,7 @@ def init_database():
     conn.commit()
     conn.close()
 
+# The rest of the functions remain the same as in your original file
 def save_evaluation(result_data):
     """Save an evaluation result to the database."""
     conn = get_db_connection()
@@ -141,4 +162,3 @@ def cleanup_old_records(days_to_keep):
     conn.commit()
     conn.close()
     return deleted_count
-
