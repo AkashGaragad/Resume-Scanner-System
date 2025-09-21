@@ -13,8 +13,7 @@
 - [How It Works](#how-it-works)  
 - [Usage](#usage)  
 - [Setup & Installation](#setup--installation)  
-- [Contributing](#contributing)  
-- [License](#license)  
+ 
 
 ---
 
@@ -44,7 +43,7 @@ List of main tools, libraries, and frameworks:
 - Web Framework: Streamlit for UI & deployment  
 - Resume parsing: (e.g. spaCy, pdfminer, docx2text, or custom NLP)  
 - Machine Learning / NLP: maybe use text classification, named entity recognition, etc.  
-- Data storage: (if applicable) local files, database, etc.  
+- Data storage: Neon.tech and localHost .  
 - Deployment: Streamlit sharing or hosting platform  
 
 ---
