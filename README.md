@@ -94,7 +94,7 @@ To set up locally:
 
 ```bash
 # 1. Clone the repository
-git clone <your_repo_url>
+git clone <https://github.com/AkashGaragad/Resume-Scanner-System.git>
 cd resume-scanner-system
 
 # 2. (Optional) Create a virtual environment
